@@ -1,7 +1,7 @@
 // import "./styles.css";
 
 // Fibonacci sequence
-const n = 30;
+const n = 20;
 
 //Fibonacci sequence
 let series = new Array(n);
@@ -19,68 +19,47 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
-const indexInArray = getRandomInt(10, n - 2);
-const chosenNumberFirst = series[indexInArray];
-const chosenNumberThird = series[indexInArray + 2];
-console.log(chosenNumberFirst);
-console.log(chosenNumberThird);
-const numberToGuess = series[indexInArray + 1];
-console.log(numberToGuess); // Create your game here!
+const indexInArray = getRandomInt(0, n);
+const numberToGuess = series[indexInArray];
 
-// Create four more numbers here
-// function getRandomGuesses(numberToGuess) {
-//   const variety = 4;
-//   const guess = Math.round(Math.random() * variety);
-//   console.log(guess);
-//   let varityArray = [];
-//   for (let i = 0; i < variety; i++) {
-//     let varityNumber = Math.round(Math.random);
-//     varityArray.push(varityNumber);
-//     console.log(varityNumber);
-//   }
-//   varityArray[guess] = numberToGuess;
-//   return varityArray;
-// }
 
-// console.log(getRandomGuesses(numberToGuess));
 
-// document.getElementById("playerNumber").innerHTML = `${playerNumber}`;
-
-function getNumber(numberToGuess) {
-  let tryies = 5;
+function getNumber(numberToGuess, indexInArray) {
+  let tryies = 3;
   
   while (tryies > 0) {
-  
     playerNumber = prompt(`${tryies} try. Enter your number:`);
+    tryies--;
     if (playerNumber != null) {
       let div = document.createElement("div");
       let textNumber = document.createTextNode(`${playerNumber}`);
       div.appendChild(textNumber);
       document.getElementById("playerNumber").appendChild(div);
-      if (playerNumber == numberToGuess) {
+      if (tryies === 1) {
+        alert(`it's a ${indexInArray} sequence number in Fibonacci sequence`);
+      }
+      if (playerNumber === numberToGuess) {
         alert("You guessed it right!");
         document.getElementById("triesLeft").innerText = `You guessed it right in ${5-tryies} tryies!` 
         break;
-      } else { if (playerNumber > numberToGuess) {
-        alert(`You have ${tryies-1} tries left. Try a LOWER number`);
-      } else {
-       alert(`You have ${tryies-1} tries left. Try a HIGHER number`);
+      } else { if (playerNumber > numberToGuess && tryies !==0 ) {
+        alert(`You have ${tryies} tries left. Try a LOWER number`);
+      } else if (playerNumber < numberToGuess && tryies !==0){
+       alert(`You have ${tryies} tries left. Try a HIGHER number`);
       }
+      else break;
       }
     } else break;
-    document.getElementById("triesLeft").innerHTML = `You had ${tryies-1} tries left.`;
-    tryies--;
+    document.getElementById("triesLeft").innerHTML = `You had ${tryies} tries left.`; 
   }
-
   if (tryies === 0) {
     alert(`You have lost. The number was ${numberToGuess}`);
     document.getElementById("app").innerHTML = `Guessing number was ${numberToGuess}`;
   }
-  
 }
 
 let playerNumber = "";
 
-document.getElementById("firstNumber").innerHTML = `${chosenNumberFirst}`;
-document.getElementById("thirdNumber").innerHTML = `${chosenNumberThird}`;
-setTimeout(() => getNumber(numberToGuess), 3000);
+
+// document.getElementById("thirdNumber").innerHTML = `${chosenNumberThird}`;
+setTimeout(() => getNumber(numberToGuess, indexInArray), 3000);

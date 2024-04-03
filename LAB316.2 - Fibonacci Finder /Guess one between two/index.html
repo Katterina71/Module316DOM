@@ -5,17 +5,21 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="src/styles.css" />
   </head>
+
   <body style="background-image: url(./3922679.jpg);  color:white; text-align: center; background-size: cover; padding-top: 15%; height: 600px; background-position: center;">
     <div id="game">
-      <h1>Welcome to the Fibonacci Finder Game!</h1>
-      <p>In this game, you will guess a number from the Fibonacci sequence. You have 3 tries to guess the right number, randomly selected from the first 20 numbers in the sequence.</p>
-      <p><strong>Fibonacci sequence:</strong> Each number is the sum of the two preceding ones, starting from 0 and 1.</p>
-      <div id="numberToGuess"> </div>
-      <!-- <h3>Guess the <span>NUMBER<span></h3> -->
+      <h1>Welcome to Fibonacci Finder!</h1>
+      <h3>This is FIRST NUMBER IN FIBONACCI SERIES:</h3>
+      <div id="firstNumber"></div>
+      <div id="thirdNumber"></div>
+      <!-- <div id="Guessing">
+        <p>Choose one of this:</p>
+      </div> -->
+      <h3>Guess the <span>SECOND NUMBER<span> in the sequence between this two?</h3>
       <p>Your Number:</p>
       <div id="playerNumber"></div>
       <div id="app"></div>
-      <p id="triesLeft">Tries left: 3</p>
+      <p id="triesLeft">You have 5 tries left.</p>
       <p id="result"></p>
     </div>
     <script src="src/index.js"></script>
