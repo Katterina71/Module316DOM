@@ -28,38 +28,52 @@ function getNumber(numberToGuess, indexInArray) {
   let tryies = 3;
   
   while (tryies > 0) {
+  
     playerNumber = prompt(`${tryies} try. Enter your number:`);
-    tryies--;
     if (playerNumber != null) {
       let div = document.createElement("div");
       let textNumber = document.createTextNode(`${playerNumber}`);
       div.appendChild(textNumber);
       document.getElementById("playerNumber").appendChild(div);
-      if (tryies === 1) {
-        alert(`it's a ${indexInArray} sequence number in Fibonacci sequence`);
-      }
-      if (playerNumber === numberToGuess) {
+      if (playerNumber == numberToGuess) {
         alert("You guessed it right!");
-        document.getElementById("triesLeft").innerText = `You guessed it right in ${5-tryies} tryies!` 
+        document.getElementById("triesLeft").innerText = `You guessed it right! ${tryies} tryies left!` 
         break;
-      } else { if (playerNumber > numberToGuess && tryies !==0 ) {
-        alert(`You have ${tryies} tries left. Try a LOWER number`);
-      } else if (playerNumber < numberToGuess && tryies !==0){
-       alert(`You have ${tryies} tries left. Try a HIGHER number`);
+      } else { if (playerNumber > numberToGuess && (tryies-1) !==0) {
+        alert(`You have ${tryies-1} tries left. Try a LOWER number`);
+      } else if (playerNumber < numberToGuess && (tryies-1) !==0) {
+       alert(`You have ${tryies-1} tries left. Try a HIGHER number`);
       }
-      else break;
       }
     } else break;
-    document.getElementById("triesLeft").innerHTML = `You had ${tryies} tries left.`; 
+    document.getElementById("triesLeft").innerHTML = `You had ${tryies-1} tries left.`;
+    tryies--;
+    if (tryies === 1) {
+      alert(` ${indexInArray+1} sequence number in Fibonacii series.`);
+    }
   }
+
   if (tryies === 0) {
     alert(`You have lost. The number was ${numberToGuess}`);
-    document.getElementById("app").innerHTML = `Guessing number was ${numberToGuess}`;
-  }
+    document.getElemen
+}
 }
 
 let playerNumber = "";
 
+for (let i=0; i < series.length; i++) {
+  let divFibonacci = document.createElement('div');
+  let FibonacciNumber = document.createTextNode(`${series[i]}`);
+  divFibonacci.style.color = "purple";
+  divFibonacci.style.backgroundColor = "white";
+  divFibonacci.style.border = "2px, solid, purple;";
+  divFibonacci.style.paddingInline = "10px";
+  divFibonacci.style.display = "inline";
+  divFibonacci.style.marginInline = "2px";
+  divFibonacci.appendChild(FibonacciNumber);  // Changed `div` to `divFibonacci`
+  document.getElementById("fibonacci").appendChild(divFibonacci);
+}
 
-// document.getElementById("thirdNumber").innerHTML = `${chosenNumberThird}`;
+
+// document.getElementById("numberToGuess").innerHTML = `${numberToGuess}`;
 setTimeout(() => getNumber(numberToGuess, indexInArray), 3000);
